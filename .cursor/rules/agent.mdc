@@ -1,0 +1,44 @@
+---
+description: Core agent behavior for TRP/MCP workspace - project context, workflow, and verification
+alwaysApply: true
+---
+
+# Agent Rules for TRP MCP Workspace
+
+## Project Context
+
+This workspace contains:
+- **MCP configuration** (`.cursor/mcp.json`) — Tenx MCP server and related tools
+- **trp1-ai-artist** — AI content generation package (`ai-content` CLI for music, video, images)
+
+When working on `trp1-ai-artist/`, defer to its project rules: [trp1-ai-artist/CLAUDE.md](trp1-ai-artist/CLAUDE.md) and [.agent/rules/RULES.md](trp1-ai-artist/.agent/rules/RULES.md).
+
+## Workflow Guidance
+
+1. **Explore before implementing** — Read the codebase (providers, presets, pipelines) before making changes
+2. **Verify commands** — Before suggesting CLI commands, confirm they match the actual CLI (e.g. `ai-content music` requires `--prompt`; use `--style` to override with a preset)
+3. **Document troubleshooting** — When something fails, capture: command, error, environment (uv vs pip, API keys), and resolution
+
+## Key Paths
+
+| Purpose | Path |
+|---------|------|
+| AI content source | `trp1-ai-artist/src/ai_content/` |
+| Providers | `trp1-ai-artist/src/ai_content/providers/{google,aimlapi,kling}/` |
+| Presets | `trp1-ai-artist/src/ai_content/presets/{music,video}.py` |
+| CLI | `trp1-ai-artist/src/ai_content/cli/main.py` |
+| Examples | `trp1-ai-artist/examples/` |
+| Exploration docs | `trp1-ai-artist/docs/CODEBASE_EXPLORATION.md` |
+
+## Code Standards (when editing ai-content)
+
+- **Async-first**: Use `async`/`await` for I/O
+- **Result objects**: Return `GenerationResult`, don't raise for expected failures
+- **Registry pattern**: New providers use `@ProviderRegistry.register_*` decorators
+- **UTC datetimes**: `datetime.now(timezone.utc)` (never `utcnow()`)
+
+## Verification Before Suggesting
+
+- For **installation**: Prefer `uv sync`; fallback to `pip install -e .` in a venv if `uv` is unavailable
+- For **API keys**: Remind user to add `GEMINI_API_KEY` and/or `AIMLAPI_KEY` to `.env`
+- For **content generation**: Confirm provider supports the feature (Lyria = instrumental only; MiniMax = vocals/lyrics)
