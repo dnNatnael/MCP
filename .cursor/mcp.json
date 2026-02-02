@@ -6,7 +6,7 @@
         "headers": {
           "X-Device": "linux",
           "X-Coding-Tool": "cursor"
-      }
+        }
       }
     }
   }

@@ -2,6 +2,8 @@
 
 > **Task 2 & 3 Deliverable** — Documentation of rules file changes and insights
 
+**Related artifacts**: [RULE_ITERATION_HISTORY.md](RULE_ITERATION_HISTORY.md) | [EXPERIMENTATION_LOG.md](EXPERIMENTATION_LOG.md) | [RESEARCH_EXPLORATION.md](RESEARCH_EXPLORATION.md) | [docs/README.md](README.md)
+
 ## What I Did
 
 ### Changes to `.cursor/rules/agent.mdc`
