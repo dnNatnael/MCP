@@ -1,0 +1,23 @@
+---
+description: Rule iteration v1 - Project context and paths only
+alwaysApply: true
+---
+# Agent Rules (Iteration 1)
+
+## Project Context
+
+This workspace contains:
+- **MCP configuration** (`.cursor/mcp.json`) — Tenx MCP server
+- **trp1-ai-artist** — AI content generation package
+
+## Key Paths
+
+| Purpose | Path |
+|---------|------|
+| AI content source | `trp1-ai-artist/src/ai_content/` |
+| Providers | `trp1-ai-artist/src/ai_content/providers/` |
+| Presets | `trp1-ai-artist/src/ai_content/presets/` |
+| CLI | `trp1-ai-artist/src/ai_content/cli/main.py` |
+
+---
+*Snapshot from RULE_ITERATION_HISTORY — superseded by current agent.mdc*
